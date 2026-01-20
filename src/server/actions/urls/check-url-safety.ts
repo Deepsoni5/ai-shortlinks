@@ -41,7 +41,7 @@ export async function checkUrlSafety(
       };
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const prompt = `
     Analyze this URL for safety concerns: "${url}"
@@ -84,7 +84,7 @@ export async function checkUrlSafety(
     console.error(error);
     return {
       success: false,
-      error: "Failed to check URL safety"
+      error: "Failed to check URL safety",
     };
   }
 }

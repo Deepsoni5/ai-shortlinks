@@ -4,9 +4,6 @@ import { nanoid } from "nanoid";
 import { randomUUID } from "crypto";
 import { hash } from "bcryptjs";
 
-/**
- * Seed the database with test data
- */
 export async function seed() {
   console.log("🌱 Seeding database...");
 
@@ -182,3 +179,8 @@ export async function seed() {
     return { success: false, error };
   }
 }
+
+seed().catch((err) => {
+  console.error("❌ Unhandled error during seeding:", err);
+  process.exit(1);
+});
