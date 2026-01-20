@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { UserSearch } from "@/components/admin/users/user-search";
 import { UsersTable } from "@/components/admin/users/users-table";
 import { Button } from "@/components/ui/button";
@@ -85,7 +86,9 @@ export default async function UserManagementPage({
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <UserSearch initialSearch={search} />
+              <Suspense fallback={<div>Loading...</div>}>
+                <UserSearch initialSearch={search} />
+              </Suspense>
               <UsersTable
                 users={users}
                 total={total}

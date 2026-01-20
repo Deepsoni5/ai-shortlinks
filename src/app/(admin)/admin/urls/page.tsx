@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { UrlFilter } from "@/components/admin/urls/url-filter";
 import { UrlSearch } from "@/components/admin/urls/url-search";
 import { UrlsTable } from "@/components/admin/urls/urls-table";
@@ -97,12 +98,16 @@ export default async function AdminUrlsPage({
                   View and manage all URLs in the system.
                 </CardDescription>
               </div>
-              <UrlSearch initialSearch={search} />
+              <Suspense fallback={<div>Loading...</div>}>
+                <UrlSearch initialSearch={search} />
+              </Suspense>
             </div>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <UrlFilter initialFilter={filter} />
+              <Suspense fallback={<div>Loading...</div>}>
+                <UrlFilter initialFilter={filter} />
+              </Suspense>
               <UrlsTable
                 urls={urls}
                 total={total}
